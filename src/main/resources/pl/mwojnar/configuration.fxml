@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.scene.control.Button?>
+<GridPane fx:controller="pl.mwojnar.controllers.ConfigurationWindowController"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10"
+          prefHeight="450" prefWidth="360">
+
+    <Label text="Map width"
+           GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+
+    <TextField fx:id="widthField" text="50" GridPane.columnSpan="2"
+               GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+    <Label text="Map height"
+           GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+
+    <TextField fx:id="heightField" text="50" GridPane.columnSpan="2"
+               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+    <Label text="Animal start energy"
+           GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+
+    <TextField fx:id="startEnergyField" text="50" GridPane.columnSpan="2"
+               GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+    <Label text="Animal move energy"
+           GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+
+    <TextField fx:id="moveEnergyField" text="1" GridPane.columnSpan="2"
+               GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+    <Label text="Plant energy"
+           GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+
+    <TextField fx:id="plantEnergyField" text="30" GridPane.columnSpan="2"
+               GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+    <Label text="Map to jungle ratio"
+           GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+
+    <TextField fx:id="jungleRatioField" text="3" GridPane.columnSpan="2"
+               GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+    <Label text="Start number of animals"
+           GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+
+    <TextField fx:id="numOfAnimalsField" text="70" GridPane.columnSpan="2"
+               GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+    <Label text="Start number of plants"
+           GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+
+    <TextField fx:id="numOfPlantsField" text="200" GridPane.columnSpan="2"
+               GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+
+    <Label text="Time step"
+           GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+
+    <TextField fx:id="timeStepField" text="15" GridPane.columnSpan="2"
+               GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+
+    <Button text="Read from Json"
+            onAction="#readFromJson"
+            GridPane.columnIndex="0" GridPane.rowIndex="10"/>
+
+    <Button text="Write to Json"
+            onAction="#writeToJson"
+            GridPane.columnIndex="1" GridPane.rowIndex="10"/>
+
+    <Button text="Start simulation"
+            onAction="#startAnimationAction"
+            GridPane.columnIndex="0" GridPane.rowIndex="12"/>
+
+    <Button text="Start two simulations"
+            onAction="#startTwoAnimationsAction"
+            GridPane.columnIndex="1" GridPane.rowIndex="12"/>
+</GridPane>

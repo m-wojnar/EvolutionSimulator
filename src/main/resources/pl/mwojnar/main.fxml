@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+
+<HBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="pl.mwojnar.controllers.MainWindowController"
+      prefHeight="800.0" prefWidth="1200.0">
+
+    <VBox minWidth="400" maxWidth="400" spacing="10">
+        <LineChart fx:id="chart" animated="false" createSymbols="false"
+                   GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <xAxis>
+                <NumberAxis fx:id="xAxis" label="Epoch" animated="false" autoRanging="false"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis label="Number of elements" animated="false"/>
+            </yAxis>
+        </LineChart>
+
+        <GridPane alignment="center" hgap="8" vgap="8">
+
+            <Label text="Number of epoch: "
+                   GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+
+            <Label fx:id="epochNumber"
+                   GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <Label text="Number of animals: "
+                   GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+
+            <Label fx:id="numberOfAnimals"
+                   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="Number of plants: "
+                   GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+
+            <Label fx:id="numberOfPlants"
+                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+            <Label text="Main genes [%]:"
+                   GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="3">
+
+                <Label text="0: "
+                       GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+
+                <Label fx:id="genes0"
+                       GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="1:  "
+                       GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+
+                <Label fx:id="genes1"
+                       GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <Label text="2:  "
+                       GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+
+                <Label fx:id="genes2"
+                       GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                <Label text="3:  "
+                       GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+
+                <Label fx:id="genes3"
+                       GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                <Label text="4:  "
+                       GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+
+                <Label fx:id="genes4"
+                       GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+                <Label text="5:  "
+                       GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+
+                <Label fx:id="genes5"
+                       GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+                <Label text="6:  "
+                       GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+
+                <Label fx:id="genes6"
+                       GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+                <Label text="7:  "
+                       GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+
+                <Label fx:id="genes7"
+                       GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+
+            </GridPane>
+
+            <Label text="Mean life energy: "
+                   GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+
+            <Label fx:id="meanLifeEnergy"
+                   GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+            <Label text="Mean life time: "
+                   GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+
+            <Label fx:id="meanLifeTime"
+                   GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+            <Label text="Mean number of children: "
+                   GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+
+            <Label fx:id="meanNumberOfChildren"
+                   GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+            <Button text="Resume simulation"
+                    fx:id="resumeButton" disable="true"
+                    onAction="#startSimulation"
+                    GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+
+            <Button text="Stop simulation"
+                    fx:id="stopButton"
+                    onAction="#stopSimulation"
+                    GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+
+            <Button text="Main gene animals"
+                    onAction="#animalsWithMainGene"
+                    GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+
+            <Button text="Statistics after n epochs"
+                    onAction="#statisticsAfterNEpochs"
+                    GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+
+        </GridPane>
+
+    </VBox>
+
+    <Canvas fx:id="canvas" width="800" height="800" onMouseClicked="#selectAnimal" />
+
+</HBox>
