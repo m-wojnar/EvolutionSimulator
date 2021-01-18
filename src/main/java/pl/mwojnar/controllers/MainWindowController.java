@@ -28,15 +28,15 @@ import java.util.stream.Collectors;
 public class MainWindowController implements IMapChangeObserver, INextCycleObserver {
 
     public static final int EPOCHS_ON_CHART = 300;
-    public static final Paint mapColor = Paint.valueOf("#ffffff");
-    public static final Paint jungleColor = Paint.valueOf("#c2ffd2");
-    public static final Paint elementColor = Paint.valueOf("#117824");
-    public static final Paint strongestMovableColor = Paint.valueOf("#fc0356");
-    public static final Paint strongMovableColor = Paint.valueOf("#9e0372");
-    public static final Paint movableColor = Paint.valueOf("#65039e");
-    public static final Paint weakMovableColor = Paint.valueOf("#034b9e");
-    public static final Paint weakestMovableColor = Paint.valueOf("#020f52");
-    public static final Paint mainGeneMovableColor = Paint.valueOf("#fcba03");
+    public static final Paint MAP_COLOR = Paint.valueOf("#ffffff");
+    public static final Paint JUNGLE_COLOR = Paint.valueOf("#c2ffd2");
+    public static final Paint ELEMENT_COLOR = Paint.valueOf("#117824");
+    public static final Paint STRONGEST_MOVABLE_COLOR = Paint.valueOf("#fc0356");
+    public static final Paint STRONG_MOVABLE_COLOR = Paint.valueOf("#9e0372");
+    public static final Paint MOVABLE_COLOR = Paint.valueOf("#65039e");
+    public static final Paint WEAK_MOVABLE_COLOR = Paint.valueOf("#034b9e");
+    public static final Paint WEAKEST_MOVABLE_COLOR = Paint.valueOf("#020f52");
+    public static final Paint MAIN_GENE_MOVABLE_COLOR = Paint.valueOf("#fcba03");
 
     private SimulationCore simulationCore;
     private StatisticsCore statisticsCore;
@@ -105,11 +105,11 @@ public class MainWindowController implements IMapChangeObserver, INextCycleObser
 
         // Fill map
         var graphicsContext = canvas.getGraphicsContext2D();
-        graphicsContext.setFill(mapColor);
+        graphicsContext.setFill(MAP_COLOR);
         graphicsContext.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
         // Draw jungle
-        graphicsContext.setFill(jungleColor);
+        graphicsContext.setFill(JUNGLE_COLOR);
         graphicsContext.fillRect(
                 (canvas.getWidth() * Configuration.getJungleLowerLeft().getX()) / Configuration.getWidth(),
                 (canvas.getHeight() * Configuration.getJungleLowerLeft().getY()) / Configuration.getHeight(),
@@ -165,15 +165,15 @@ public class MainWindowController implements IMapChangeObserver, INextCycleObser
     }
 
     private void clearField(Vector2d position) {
-        var color = mapColor;
+        var color = MAP_COLOR;
         if (position.follows(Configuration.getJungleLowerLeft()) && position.precedes(Configuration.getJungleUpperRight()))
-            color = jungleColor;    // we are inside jungle
+            color = JUNGLE_COLOR;    // we are inside jungle
 
         drawRectangle(position, color);
     }
 
     private void drawElement(IMapElement element) {
-        drawCircle(element.getPosition(), elementColor);
+        drawCircle(element.getPosition(), ELEMENT_COLOR);
     }
 
     private void drawMovable(IMovableElement element) {
@@ -182,15 +182,15 @@ public class MainWindowController implements IMapChangeObserver, INextCycleObser
 
     private Paint energyColor(int lifeEnergy) {
         if (lifeEnergy <= 0)
-            return weakestMovableColor;
+            return WEAKEST_MOVABLE_COLOR;
 
         // Color of movable depends on energy level
         return switch ((2 * Configuration.getStartEnergy()) / lifeEnergy) {
-            case 0 -> strongestMovableColor;
-            case 1 -> strongMovableColor;
-            case 2 -> movableColor;
-            case 3 -> weakMovableColor;
-            default -> weakestMovableColor;
+            case 0 -> STRONGEST_MOVABLE_COLOR;
+            case 1 -> STRONG_MOVABLE_COLOR;
+            case 2 -> MOVABLE_COLOR;
+            case 3 -> WEAK_MOVABLE_COLOR;
+            default -> WEAKEST_MOVABLE_COLOR;
         };
     }
 
@@ -292,7 +292,7 @@ public class MainWindowController implements IMapChangeObserver, INextCycleObser
                 .filter(IMovableElement.class::isInstance)
                 .map(IMovableElement.class::cast)
                 .filter(m -> statisticsCore.mainGeneIndex(m.getGenesCounter()) == mainGene)
-                .forEach(m -> drawCircle(m.getPosition(), mainGeneMovableColor));
+                .forEach(m -> drawCircle(m.getPosition(), MAIN_GENE_MOVABLE_COLOR));
     }
 
     @FXML
